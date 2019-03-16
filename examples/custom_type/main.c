@@ -29,8 +29,6 @@ int main() {
 	// end of main function: drop current rc. This is done whenever
 	// a rc goes out of scope
 	RC_DROP(CustomType)(rc_ptr);
-	// destroy rc itself. This is only done once for one rc
-	RC_DESTROY(CustomType)(rc_ptr);
 	return EXIT_SUCCESS;
 }
 

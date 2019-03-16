@@ -61,21 +61,11 @@ static inline void rc_check_result(RcResult result) {
 #define RC_DROP(T) RC_METHOD_NAME(T,drop)
 #define RC_METHOD_DROP_DEC(T) void RC_DROP(T)(RC(T)* self)
 #define RC_METHOD_DROP_DEF(T) RC_METHOD_DROP_DEC(T) { \
-		if(self->n_refs <= 0) { \
-			DIE("%s: managed pointer has already been freed.\n", __func__); \
-		} \
 		self->n_refs--; \
 		if(self->n_refs <= 0) { \
 			self->destructor(self->p_raw); \
+			free(self); \
 		} \
-	}
-#define RC_DESTROY(T) RC_METHOD_NAME(T,destroy)
-#define RC_DESTROY_DEC(T) void RC_DESTROY(T)(RC(T)* self)
-#define RC_DESTROY_DEF(T) RC_DESTROY_DEC(T) { \
-		if(self->n_refs > 0) { \
-			DIE("%s: managed pointer has not been freed.", __func__); \
-		} \
-		free(self); \
 	}
 
 #define RC_GET(X) (X)->p_raw
@@ -85,11 +75,9 @@ static inline void rc_check_result(RcResult result) {
 	RC_TYPE_DEC(T); \
 	RC_NEW_DEC(T); \
 	RC_METHOD_PASS_DEC(T); \
-	RC_METHOD_DROP_DEC(T); \
-	RC_DESTROY_DEC(T);
+	RC_METHOD_DROP_DEC(T);
 #define RC_DEF(T) \
 	RC_NEW_DEF(T) \
 	RC_METHOD_PASS_DEF(T) \
-	RC_METHOD_DROP_DEF(T) \
-	RC_DESTROY_DEF(T)
+	RC_METHOD_DROP_DEF(T)
 
