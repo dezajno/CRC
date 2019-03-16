@@ -7,9 +7,9 @@ expand to the declarations and definitions for reference counting of a specific
 type.
 
 ## Files
-- <./rc.h>: Main file, defining "generic" macros that expand to declarations and 
+- [rc.h](./rc.h): Main file, defining "generic" macros that expand to declarations and 
 definitions for custom types.
-- <./util.h>: Definies generally usable utilities such as the `CAT` macro for
+- [util.h](./util.h): Definies generally usable utilities such as the `CAT` macro for
 concatenation.
 
 ## Examples
