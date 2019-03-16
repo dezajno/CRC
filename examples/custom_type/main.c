@@ -18,7 +18,6 @@ int main() {
 	
 	// wrap instance of custom type into reference counter (rc)
 	RC(CustomType)* rc_ptr;
-	// abort if rc was not successfully created
 	rc_check_result( RC_NEW(CustomType)(&rc_ptr, raw_ptr, CustomType_destroy) );
 	
 	// call function using RC_PASS for passing the reference counter
