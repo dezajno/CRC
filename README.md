@@ -13,7 +13,7 @@ definitions for custom types.
 concatenation.
 
 ## Examples
-Examples are provided in the <./examples> sub-folder. Each example is in its
+Examples are provided in the [examples](./examples) sub-folder. Each example is in its
 own folder. A Makefile is provided for each example. Building the examples has
 been tested under Xubuntu 18.04 using gcc 7.3 and the c11 standard.
 
